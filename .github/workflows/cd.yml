@@ -6,7 +6,6 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    timeout-minute: 1
 
     steps:
       - name: Check out code
