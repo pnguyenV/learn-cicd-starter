@@ -1,0 +1,24 @@
+name: CD Deployment 
+on:
+  push:
+    branches: [main]
+jobs:
+  deploy:
+    name: Deploy
+    runs-on:ubuntu-latest
+    timeout-minute: 10
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+  
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.24.4"
+
+      - name: make build for the notely app binary using scripts/buildprod.sh
+        run: ./scripts/buildprod.sh 
+          
+
+
