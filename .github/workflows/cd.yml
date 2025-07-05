@@ -1,7 +1,9 @@
-name: CD Deployment 
+name: cd
+
 on:
   push:
     branches: [main]
+
 jobs:
   deploy:
     name: Deploy
@@ -10,14 +12,11 @@ jobs:
     steps:
       - name: Check out code
         uses: actions/checkout@v4
-  
+
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: "1.24.4"
+          go-version: '1.23.0'
 
-      - name: make build for the notely app binary using scripts/buildprod.sh
-        run: ./scripts/buildprod.sh 
-          
-
-
+      - name: Build app
+        run: ./scripts/buildprod.sh
